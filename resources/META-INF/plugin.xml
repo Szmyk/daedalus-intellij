@@ -1,0 +1,25 @@
+<idea-plugin version="2">
+  <id>org.avallach.daedalus.ide</id>
+  <name>Daedalus support</name>
+  <version>1.0</version>
+  <vendor email="themodders@avallach.ovh" url="http://soulfire.worldofgothic.com/">SoulFire</vendor>
+
+  <description><![CDATA[
+      Support for language Daedalus, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR). <br>
+      Plugin was developed for SoulFire modding team.
+  ]]></description>
+
+  <change-notes><![CDATA[
+  ]]></change-notes>
+
+  <idea-version since-build="141.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+      <fileTypeFactory implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
