@@ -5,10 +5,9 @@
 	psiImplPackage = "org.avallach.daedalus.parser.psi.impl"
 	elementTypeHolderClass="org.avallach.daedalus.parser.psi.DaedalusTypes"
 
+	// configuration for required files
 	elementTypeClass = "org.avallach.daedalus.parser.psi.tree.ElementType"
 	tokenTypeClass = "org.avallach.daedalus.parser.psi.tree.TokenType"
-//	implements = "org.avallach.gothic.parser.psi.DaedalusCompositeElement"
-//	extends="org.avallach.gothic.parser.psi.impl.DaedalusCompositeElementImpl"
 
 	tokens =
 	[
