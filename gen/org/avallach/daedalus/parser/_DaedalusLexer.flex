@@ -2,7 +2,7 @@ package org.avallach.daedalus.parser;
 
 import com.intellij.lexer.*;
 import com.intellij.psi.tree.IElementType;
-import static generated.GeneratedTypes.*;
+import static org.avallach.daedalus.parser.psi.DaedalusTypes.*;
 
 %%
 
@@ -28,7 +28,6 @@ INTEGER_LITERAL=[0-9]+
 FLOAT_LITERAL=[0-9]+\.[0-9]+
 LINE_COMMENT="//".*
 BLOCK_COMMENT="/"\*([^*]|\*+[^*/])*(\*+"/")?
-WHITESPACE=[ \t\r\n]+
 
 %%
 <YYINITIAL> {
@@ -87,7 +86,6 @@ WHITESPACE=[ \t\r\n]+
   {FLOAT_LITERAL}         { return FLOAT_LITERAL; }
   {LINE_COMMENT}          { return LINE_COMMENT; }
   {BLOCK_COMMENT}         { return BLOCK_COMMENT; }
-  {WHITESPACE}            { return WHITESPACE; }
 
 }
 

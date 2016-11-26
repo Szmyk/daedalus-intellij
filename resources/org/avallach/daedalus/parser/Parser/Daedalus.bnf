@@ -1,7 +1,14 @@
 {
-	parserClass = "org.avallach.daedalus.parser.Parser" //will be generated
+    // configuration for generated files
+	parserClass = "org.avallach.daedalus.parser.Parser"
 	psiPackage = "org.avallach.daedalus.parser.psi"
 	psiImplPackage = "org.avallach.daedalus.parser.psi.impl"
+	elementTypeHolderClass="org.avallach.daedalus.parser.psi.DaedalusTypes"
+
+	elementTypeClass = "org.avallach.daedalus.parser.psi.tree.ElementType"
+	tokenTypeClass = "org.avallach.daedalus.parser.psi.tree.TokenType"
+//	implements = "org.avallach.gothic.parser.psi.DaedalusCompositeElement"
+//	extends="org.avallach.gothic.parser.psi.impl.DaedalusCompositeElementImpl"
 
 	tokens =
 	[
@@ -13,7 +20,6 @@
 			CONST = "const"
 			VAR = "var"
 			FUNC = "func"
-
 			IF = "if"
 			ELSE = "else"
 			RETURN = "return"
@@ -91,7 +97,7 @@
 			FLOAT_LITERAL = "regexp:[0-9]+\.[0-9]+"
 			LINE_COMMENT = "regexp://.*"
 			BLOCK_COMMENT = "regexp:/\*([^*]|\*+[^*/])*(\*+/)?"
-			WHITESPACE = "regexp:[ \t\r\n]+"
+			//WHITESPACE = "regexp:[ \t\r\n]+"
 		//}
 	]
 }
