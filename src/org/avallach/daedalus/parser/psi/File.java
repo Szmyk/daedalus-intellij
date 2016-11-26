@@ -2,7 +2,7 @@ package org.avallach.daedalus.parser.psi;
 
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.psi.FileViewProvider;
-import org.avallach.daedalus.ide.FileType;
+import org.avallach.daedalus.parser.FileType;
 import org.avallach.daedalus.parser.Language;
 import org.jetbrains.annotations.NotNull;
 

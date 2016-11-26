@@ -1,7 +1,7 @@
-package org.avallach.daedalus.ide;
+package org.avallach.daedalus.parser;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
-import org.avallach.daedalus.parser.Language;
+import org.avallach.daedalus.ide.Icons;
 import org.jetbrains.annotations.*;
 
 import javax.swing.*;
