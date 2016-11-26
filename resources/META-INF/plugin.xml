@@ -17,6 +17,7 @@
   <extensions defaultExtensionNs="com.intellij">
       <fileTypeFactory implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
       <lang.parserDefinition language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
+      <lang.syntaxHighlighterFactory language="Daedalus" implementationClass="org.avallach.daedalus.ide.SyntaxHighlighterFactory"/>
   </extensions>
 
   <actions>
