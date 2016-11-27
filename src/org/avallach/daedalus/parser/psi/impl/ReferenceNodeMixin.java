@@ -11,6 +11,8 @@ import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.indexing.FileBasedIndex;
+import org.avallach.commons.Debug;
+import org.avallach.daedalus.parser.ElementFactory;
 import org.avallach.daedalus.parser.FileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -29,9 +31,12 @@ public class ReferenceNodeMixin extends ASTWrapperPsiElement implements PsiRefer
         return this;
     }
 
-    private Stream<PsiNamedElement> findFileDefinitions(PsiFile file) {
-        return Arrays.stream(PsiTreeUtil.getChildrenOfType(file, PsiNamedElement.class))
-                .filter(this::isReferenceTo);
+    private Stream<PsiNamedElement> findFileDefinitions(@NotNull PsiFile file) {
+        PsiNamedElement[] allDefinitions = PsiTreeUtil.getChildrenOfType(file, PsiNamedElement.class);
+        if (allDefinitions != null)
+            return Arrays.stream(allDefinitions).filter(this::isReferenceTo);
+        else
+            return Stream.empty();
     }
 
     private Stream<PsiNamedElement> findProjectDefinitions(Project project) {
@@ -77,12 +82,13 @@ public class ReferenceNodeMixin extends ASTWrapperPsiElement implements PsiRefer
     }
 
     @Override
-    public PsiElement handleElementRename(String s) throws IncorrectOperationException {
-        throw new IncorrectOperationException(); //TODO
+    public PsiElement handleElementRename(String newName) throws IncorrectOperationException {
+        return ElementFactory.renameElement(this, newName);
     }
 
     @Override
     public PsiElement bindToElement(@NotNull PsiElement psiElement) throws IncorrectOperationException {
+        Debug.log(getName(), psiElement instanceof PsiNamedElement ? ((PsiNamedElement) psiElement).getName() : psiElement.getText(), " -> IncorrectOperationException!");
         throw new IncorrectOperationException(); //TODO
     }
 

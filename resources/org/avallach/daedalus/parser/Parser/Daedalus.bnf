@@ -90,7 +90,7 @@
 		//}
 		//REGEX_TOKENS
 		//{
-			IDENTIFIER_TOKEN = "regexp:[a-zA-Z_][:jletterdigit:]+"
+			IDENTIFIER_TOKEN = "regexp:[a-zA-Z_][:jletterdigit:]*"
 			STRING_LITERAL = "regexp:\"[^\r\n\"]*\""
 			INTEGER_LITERAL = "regexp:[0-9]+"
 			FLOAT_LITERAL = "regexp:[0-9]+\.[0-9]+"
@@ -101,7 +101,7 @@
 	]
 
 	mixin("FunctionDef")="org.avallach.daedalus.parser.psi.impl.DaedalusDefinitionImpl"
-	implements("FunctionDef")="com.intellij.psi.PsiNameIdentifierOwner"
+	implements("FunctionDef")="com.intellij.psi.PsiNameIdentifierOwner" //TODO: needed?
 	mixin("ReferenceNode")="org.avallach.daedalus.parser.psi.impl.ReferenceNodeMixin"
 }
 

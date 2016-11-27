@@ -22,7 +22,7 @@ import static org.avallach.daedalus.parser.psi.DaedalusTypes.*;
 EOL=\R
 WHITE_SPACE=\s
 
-IDENTIFIER_TOKEN=[a-zA-Z_][:jletterdigit:]+
+IDENTIFIER_TOKEN=[a-zA-Z_][:jletterdigit:]*
 STRING_LITERAL=\"[^\r\n\"]*\"
 INTEGER_LITERAL=[0-9]+
 FLOAT_LITERAL=[0-9]+\.[0-9]+
