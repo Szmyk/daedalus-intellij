@@ -100,8 +100,8 @@
 		//}
 	]
 
-	mixin("FunctionDef")="org.avallach.daedalus.parser.psi.impl.DaedalusDefinitionImpl"
-	implements("FunctionDef")="com.intellij.psi.PsiNameIdentifierOwner" //TODO: needed?
+	mixin("NameNode")="org.avallach.daedalus.parser.psi.impl.DaedalusDefinitionImpl"
+	implements("NameNode")="com.intellij.psi.PsiNameIdentifierOwner"
 	mixin("ReferenceNode")="org.avallach.daedalus.parser.psi.impl.ReferenceNodeMixin"
 }
 

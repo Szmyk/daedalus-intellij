@@ -4,11 +4,9 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
-import org.avallach.commons.Debug;
 import org.avallach.daedalus.parser.ElementFactory;
-import org.avallach.daedalus.parser.psi.NameNode;
+import org.avallach.daedalus.parser.psi.DaedalusTypes;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +19,10 @@ public abstract class DaedalusDefinitionImpl extends ASTWrapperPsiElement implem
     @Nullable
     @Override
     public PsiElement getNameIdentifier() {
-        return PsiTreeUtil.getChildOfType(this, NameNode.class);
+        ASTNode identifier = getNode().findChildByType(DaedalusTypes.IDENTIFIER_TOKEN);
+        if (identifier == null)
+            return null;
+        return identifier.getPsi();
     }
 
     @Nullable

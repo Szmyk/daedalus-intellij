@@ -17,7 +17,7 @@ import org.avallach.daedalus.parser.FileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -32,11 +32,8 @@ public class ReferenceNodeMixin extends ASTWrapperPsiElement implements PsiRefer
     }
 
     private Stream<PsiNamedElement> findFileDefinitions(@NotNull PsiFile file) {
-        PsiNamedElement[] allDefinitions = PsiTreeUtil.getChildrenOfType(file, PsiNamedElement.class);
-        if (allDefinitions != null)
-            return Arrays.stream(allDefinitions).filter(this::isReferenceTo);
-        else
-            return Stream.empty();
+        Collection<PsiNamedElement> allDefinitions = PsiTreeUtil.findChildrenOfType(file, PsiNamedElement.class);
+        return allDefinitions.stream().filter(this::isReferenceTo);
     }
 
     private Stream<PsiNamedElement> findProjectDefinitions(Project project) {

@@ -18,6 +18,7 @@
       <fileTypeFactory implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
       <lang.parserDefinition language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
       <lang.syntaxHighlighterFactory language="Daedalus" implementationClass="org.avallach.daedalus.ide.SyntaxHighlighterFactory"/>
+      <lang.refactoringSupport language="Daedalus" implementationClass="org.avallach.daedalus.ide.RefactoringSupportProvider"/>
   </extensions>
 
   <actions>

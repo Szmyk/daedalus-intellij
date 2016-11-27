@@ -4,8 +4,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
+import org.avallach.daedalus.parser.psi.DaedalusTypes;
 import org.avallach.daedalus.parser.psi.NameNode;
 import org.avallach.daedalus.parser.psi.ReferenceNode;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
+//TODO: major refectoring!
 public class ElementFactory {
     private static com.intellij.openapi.fileTypes.FileType fileType = FileType.INSTANCE;
     private static String fileName = "__." + fileType.getDefaultExtension();
@@ -32,6 +35,12 @@ public class ElementFactory {
 
     public static PsiElement renameElement(PsiElement element, String newName)
     {
+        if (element instanceof LeafPsiElement && ((LeafPsiElement) element).getElementType() == DaedalusTypes.IDENTIFIER_TOKEN)
+        {
+            PsiFile fromText = PsiFileFactory.getInstance(element.getProject())
+                    .createFileFromText(fileName, fileType, "var int " + newName);
+            return element.replace(fromText.getNode().findChildByType(DaedalusTypes.IDENTIFIER_TOKEN).getPsi());
+        }
         Class<? extends PsiElement> type = getType(element);
         if (type != null)
             return element.replace(createElement(element.getProject(), type, newName));

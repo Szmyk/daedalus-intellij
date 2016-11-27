@@ -17,7 +17,7 @@ public class Visitor extends PsiElementVisitor {
   }
 
   public void visitFunctionDef(@NotNull FunctionDef o) {
-    visitPsiNameIdentifierOwner(o);
+    visitPsiElement(o);
   }
 
   public void visitInstanceDecl(@NotNull InstanceDecl o) {
@@ -29,7 +29,7 @@ public class Visitor extends PsiElementVisitor {
   }
 
   public void visitNameNode(@NotNull NameNode o) {
-    visitPsiElement(o);
+    visitPsiNameIdentifierOwner(o);
   }
 
   public void visitPrototypeDef(@NotNull PrototypeDef o) {
