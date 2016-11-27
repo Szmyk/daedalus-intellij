@@ -4,7 +4,6 @@ import com.intellij.lang.*;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
-import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.*;
 import org.avallach.daedalus.parser.psi.DaedalusTypes;
 import org.avallach.daedalus.parser.psi.File;

@@ -2,7 +2,11 @@
   <id>org.avallach.daedalus.ide</id>
   <name>Daedalus support</name>
   <version>0.1</version>
-  <vendor email="themodders@avallach.ovh" url="http://soulfire.worldofgothic.com/">SoulFire</vendor>
+  <vendor
+          email="github@avallach.ovh"
+          url="https://github.com/Avallach7/daedalus-intellij">
+      Adam 'Avallach' Golebiowski
+  </vendor>
 
   <description><![CDATA[
 Support for Daedalus language, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR). <br>
@@ -15,14 +19,12 @@ This project was developed primarily for SoulFire group.
   <idea-version since-build="141.0"/>
 
   <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
-      <lang.parserDefinition language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
+      <fileTypeFactory                                        implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
+      <lang.parserDefinition         language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
       <lang.syntaxHighlighterFactory language="Daedalus" implementationClass="org.avallach.daedalus.ide.SyntaxHighlighterFactory"/>
-      <lang.refactoringSupport language="Daedalus" implementationClass="org.avallach.daedalus.ide.RefactoringSupportProvider"/>
+      <lang.refactoringSupport       language="Daedalus" implementationClass="org.avallach.daedalus.ide.RefactoringSupportProvider"/>
   </extensions>
 
   <actions>
-    <!-- Add your actions here -->
   </actions>
-
 </idea-plugin>
