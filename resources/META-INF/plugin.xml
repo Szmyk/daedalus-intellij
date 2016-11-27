@@ -1,30 +1,35 @@
 <idea-plugin version="2">
-  <id>org.avallach.daedalus.ide</id>
-  <name>Daedalus support</name>
-  <version>0.1</version>
-  <vendor
-          email="github@avallach.ovh"
-          url="https://github.com/Avallach7/daedalus-intellij">
-      Adam 'Avallach' Golebiowski
-  </vendor>
+    <id>org.avallach.daedalus.ide</id>
+    <name>Daedalus support</name>
+    <version>0.1</version>
+    <idea-version since-build="141.0"/>
 
-  <description><![CDATA[
+    <description><![CDATA[
 Support for Daedalus language, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR). <br>
 This project was developed primarily for SoulFire group.
-  ]]></description>
+    ]]></description>
 
-  <change-notes><![CDATA[
-  ]]></change-notes>
+    <vendor
+            email="github@avallach.ovh"
+            url="https://github.com/Avallach7/daedalus-intellij">
+        Adam 'Avallach' Golebiowski
+    </vendor>
 
-  <idea-version since-build="141.0"/>
+    <change-notes><![CDATA[
+    ]]></change-notes>
 
-  <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory                                        implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
-      <lang.parserDefinition         language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
-      <lang.syntaxHighlighterFactory language="Daedalus" implementationClass="org.avallach.daedalus.ide.SyntaxHighlighterFactory"/>
-      <lang.refactoringSupport       language="Daedalus" implementationClass="org.avallach.daedalus.ide.RefactoringSupportProvider"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory                                        implementation="org.avallach.daedalus.ide.FileTypeFactory"/>
+        <lang.parserDefinition         language="Daedalus" implementationClass="org.avallach.daedalus.parser.Definition"/>
+        <lang.syntaxHighlighterFactory language="Daedalus" implementationClass="org.avallach.daedalus.ide.highlighting.SyntaxHighlighterFactory"/>
+        <lang.refactoringSupport       language="Daedalus" implementationClass="org.avallach.daedalus.ide.RefactoringSupportProvider"/>
+    </extensions>
 
-  <actions>
-  </actions>
+    <project-components>
+        <component><implementation-class>org.avallach.daedalus.ide.highlighting.ReferenceHighlighter</implementation-class></component>
+        <component><implementation-class>org.avallach.daedalus.ide.highlighting.DefinitionHighlighter</implementation-class></component>
+    </project-components>
+
+    <actions>
+    </actions>
 </idea-plugin>

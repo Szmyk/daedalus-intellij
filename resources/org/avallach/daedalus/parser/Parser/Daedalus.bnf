@@ -110,7 +110,7 @@ private DaedalusFile ::= { ( FunctionDef | ConstDef | VarDecl | ClassDef | Proto
 	FunctionDef ::= "func" TypeReference NameNode ParameterList StatementBlock {pin=1}
 	//{
 		private ParameterList  ::= "(" [ VarDecl { "," VarDecl }* ] ")" {pin=1}
-		private StatementBlock ::= "{" { ( FuncCall | Assignment | IfBlock | ReturnStatement | ConstDef | VarDecl | Expression ) [ ";" ] }* "}" //Expression present because "gorn.aivar[aiv_findable]==true;", semicolon optional because "else if (Thorus_MordragKo == LOG_FAILED){}"
+		StatementBlock ::= "{" { ( FuncCall | Assignment | IfBlock | ReturnStatement | ConstDef | VarDecl | Expression ) [ ";" ] }* "}" //Expression present because "gorn.aivar[aiv_findable]==true;", semicolon optional because "else if (Thorus_MordragKo == LOG_FAILED){}"
 		//{
 			private FuncCall        ::= ReferenceNode "(" [ Expression { "," Expression }* ] ")" {pin=2} //Expression "PrintDebugInt(bodystate&(BS_MAX|BS_FLAG_INTERRUPTABLE|BS_FLAG_FREEHANDS));"
 			private Assignment      ::= ComplexReference ( "=" | "+=" | "-=" | "*=" | "/=" ) Expression {pin=2}

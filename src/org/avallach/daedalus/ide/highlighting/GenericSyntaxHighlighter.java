@@ -1,4 +1,4 @@
-package org.avallach.daedalus.ide;
+package org.avallach.daedalus.ide.highlighting;
 
 import com.google.common.hash.Hashing;
 import com.intellij.lexer.Lexer;
