@@ -1,9 +1,4 @@
 {
-    //To generate Java code:
-    // Daedalus.bnf > Tools > Generate Parser Code
-    // Daedalus.bnf > Tools > Generate JFlex Lexer > "gen/org/avallach/daedalus/parser/_DaedalusLexer.flex"
-    // _DaedalusLexer.flex > Tools > Run JFlex Generator
-
     // configuration for generated files
 	parserClass = "org.avallach.daedalus.parser.Parser"
 	psiPackage = "org.avallach.daedalus.parser.psi"
