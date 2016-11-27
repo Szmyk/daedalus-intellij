@@ -1,19 +1,16 @@
 package org.avallach.daedalus.ide;
 
 import com.intellij.psi.PsiElement;
-import org.avallach.commons.Debug;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import org.avallach.daedalus.parser.psi.DaedalusTypes;
+import org.avallach.daedalus.parser.psi.NameNode;
 import org.jetbrains.annotations.NotNull;
 
 public class RefactoringSupportProvider extends com.intellij.lang.refactoring.RefactoringSupportProvider {
     @Override
-    public boolean isInplaceRenameAvailable(@NotNull PsiElement element, PsiElement context) {
-        Debug.log(element, context);
-        return true;
-    }
-
-    @Override
     public boolean isMemberInplaceRenameAvailable(@NotNull PsiElement element, PsiElement context) {
-        Debug.log(element, context);
-        return true;
+        return element instanceof NameNode &&
+                context instanceof LeafPsiElement &&
+                ((LeafPsiElement) context).getElementType() == DaedalusTypes.IDENTIFIER_TOKEN;
     }
 }
