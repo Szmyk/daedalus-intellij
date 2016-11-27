@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static org.avallach.daedalus.parser.psi.DaedalusTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import org.avallach.daedalus.parser.psi.*;
 
-public class ReferenceNodeImpl extends ASTWrapperPsiElement implements ReferenceNode {
+public class ReferenceNodeImpl extends ReferenceNodeMixin implements ReferenceNode {
 
   public ReferenceNodeImpl(ASTNode node) {
     super(node);

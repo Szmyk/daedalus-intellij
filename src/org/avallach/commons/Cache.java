@@ -1,4 +1,4 @@
-package org.avallach.daedalus.ide.utils;
+package org.avallach.commons;
 
 import java.util.HashMap;
 import java.util.Map;

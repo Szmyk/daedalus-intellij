@@ -1,4 +1,4 @@
-package org.avallach.daedalus.parser.psi.tree;
+package org.avallach.daedalus.parser.psi;
 
 import com.intellij.psi.tree.IElementType;
 import org.avallach.daedalus.parser.Language;

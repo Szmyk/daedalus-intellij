@@ -4,6 +4,7 @@ package org.avallach.daedalus.parser.psi;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiNameIdentifierOwner;
 
 public class Visitor extends PsiElementVisitor {
 
@@ -16,7 +17,7 @@ public class Visitor extends PsiElementVisitor {
   }
 
   public void visitFunctionDef(@NotNull FunctionDef o) {
-    visitPsiElement(o);
+    visitPsiNameIdentifierOwner(o);
   }
 
   public void visitInstanceDecl(@NotNull InstanceDecl o) {
@@ -41,6 +42,10 @@ public class Visitor extends PsiElementVisitor {
 
   public void visitVarDecl(@NotNull VarDecl o) {
     visitPsiElement(o);
+  }
+
+  public void visitPsiNameIdentifierOwner(@NotNull PsiNameIdentifierOwner o) {
+    visitElement(o);
   }
 
   public void visitPsiElement(@NotNull PsiElement o) {

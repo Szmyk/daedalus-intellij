@@ -6,8 +6,8 @@
 	elementTypeHolderClass="org.avallach.daedalus.parser.psi.DaedalusTypes"
 
 	// configuration for required files
-	elementTypeClass = "org.avallach.daedalus.parser.psi.tree.ElementType"
-	tokenTypeClass = "org.avallach.daedalus.parser.psi.tree.TokenType"
+	elementTypeClass = "org.avallach.daedalus.parser.psi.ElementType"
+	tokenTypeClass = "org.avallach.daedalus.parser.psi.TokenType"
 
 	tokens =
 	[
@@ -99,6 +99,10 @@
 			//WHITESPACE = "regexp:[ \t\r\n]+"
 		//}
 	]
+
+	mixin("FunctionDef")="org.avallach.daedalus.parser.psi.impl.DaedalusDefinitionImpl"
+	implements("FunctionDef")="com.intellij.psi.PsiNameIdentifierOwner"
+	mixin("ReferenceNode")="org.avallach.daedalus.parser.psi.impl.ReferenceNodeMixin"
 }
 
 private DaedalusFile ::= { ( FunctionDef | ConstDef | VarDecl | ClassDef | PrototypeDef | InstanceDef | InstanceDecl ) ";" }*

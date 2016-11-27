@@ -4,8 +4,6 @@ package org.avallach.daedalus.parser.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
-import org.avallach.daedalus.parser.psi.tree.ElementType;
-import org.avallach.daedalus.parser.psi.tree.TokenType;
 import org.avallach.daedalus.parser.psi.impl.*;
 
 public interface DaedalusTypes {
