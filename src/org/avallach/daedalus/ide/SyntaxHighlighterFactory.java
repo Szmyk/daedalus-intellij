@@ -10,6 +10,6 @@ public class SyntaxHighlighterFactory extends com.intellij.openapi.fileTypes.Syn
     @NotNull
     @Override
     public SyntaxHighlighter getSyntaxHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile) {
-        return new GenericSyntaxHighlighter();
+        return new TokenHighlighter();
     }
 }

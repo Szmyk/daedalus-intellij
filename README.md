@@ -19,7 +19,10 @@ Intermediate file `_DaedalusLexer.flex` is used for generated lexer definition.
 
 1. `Daedalus.bnf > Tools > Generate Parser Code`
 2. `Daedalus.bnf > Tools > Generate JFlex Lexer > gen/org/avallach/daedalus/parser/_DaedalusLexer.flex`
-3. `_DaedalusLexer.flex > Tools > Run JFlex Generator`
+3. `_DaedalusLexer.flex` > add `%ignorecase` below lines prefixed with `%`
+4. `_DaedalusLexer.flex > Tools > Run JFlex Generator`
+
+In long run, it would be great to automatize it with Ant.
 
 ### Building the plugin .jar
 `Build > Prepare Plugin Module daedalus-intellij For Deployment`
