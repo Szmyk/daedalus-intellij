@@ -23,3 +23,7 @@ Intermediate file `_DaedalusLexer.flex` is used for generated lexer definition.
 
 ### Building the plugin .jar
 `Build > Prepare Plugin Module daedalus-intellij For Deployment`
+
+# Contact
+- mailto://github**@**avallach.ovh
+- http://themodders.org/index.php?topic=27411
