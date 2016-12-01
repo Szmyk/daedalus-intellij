@@ -31,11 +31,20 @@ public class ReferenceResolver  implements ResolveCache.Resolver {
         PsiElement cached = cache.get(reference);
         if (cached != null)
             return cached;
-        PsiFile localFile = reference.getElement().getContainingFile();
-        final PsiElement[] definition = {findInFile(reference, localFile)};
+        final PsiElement[] definition = new PsiElement[1];
         if (definition[0] == null)
         {
-            Project project = reference.getElement().getProject();
+            PsiFile localFile = reference.getElement().getContainingFile();
+            definition[0] = findInFile(reference, localFile);
+        }
+        Project project = reference.getElement().getProject();
+        if (definition[0] == null)
+        {
+            PsiFile externalsFile = EngineExternals.getDefinitionsFile(project);
+            definition[0] = findInFile(reference, externalsFile);
+        }
+        if (definition[0] == null)
+        {
             PsiManager psiManager = PsiManager.getInstance(project);
             ProjectRootManager projectRootManager = ProjectRootManager.getInstance(project);
             //TODO: iterate backwards on files listed before this one in .src file
