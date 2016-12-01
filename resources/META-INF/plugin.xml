@@ -27,7 +27,7 @@ This project was developed primarily for SoulFire group.
 
     <project-components>
         <component><implementation-class>org.avallach.daedalus.ide.highlighting.ReferenceHighlighter</implementation-class></component>
-        <component><implementation-class>org.avallach.daedalus.ide.highlighting.DefinitionHighlighter</implementation-class></component>
+        <!--<component><implementation-class>org.avallach.daedalus.ide.highlighting.DefinitionHighlighter</implementation-class></component>-->
     </project-components>
 
     <actions>
