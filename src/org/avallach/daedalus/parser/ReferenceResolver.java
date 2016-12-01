@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,11 +24,12 @@ public class ReferenceResolver  implements ResolveCache.Resolver {
 
     @Override
     public PsiElement resolve(@NotNull PsiReference reference, boolean incompleteCode) {
+        Debug.log(reference.getCanonicalText());
         String name = reference.getCanonicalText();
         if (name.isEmpty())
             return null;
         PsiElement cached = cache.get(reference);
-        if (cached != null)
+        if (cached != null && isReference(reference, cached))
             return cached;
         final PsiElement[] definition = new PsiElement[1];
         if (definition[0] == null)
