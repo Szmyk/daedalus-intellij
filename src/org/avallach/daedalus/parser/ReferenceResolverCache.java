@@ -46,6 +46,12 @@ public class ReferenceResolverCache {
             Debug.log("cache miss: " + name);
             return null;
         }
+        PsiElement oldElement = entry.element.get();
+        if (oldElement != null && oldElement.isValid())
+        {
+            Debug.log("cache hit", oldElement.getText());
+            return oldElement;
+        }
         PsiFile[] files = PsiUtil.findFile(
                 reference.getElement().getProject(),
                 Paths.getNameOf(entry.path));
@@ -57,21 +63,13 @@ public class ReferenceResolverCache {
         PsiElement foundElement = file.get().findElementAt(entry.offset);
         if (foundElement != null)
             foundElement = foundElement.getParent();
-        PsiElement oldElement = entry.element.get();
-        if (foundElement != oldElement) {
-            Debug.log("foundElement != oldElement");
-        }
-        if (foundElement == null) {
-            Debug.log("Found null element in cache!");
-            return null;
-        }
-        if (!foundElement.getText().equals(name))
+        if (foundElement == null || !foundElement.getText().equals(name))
         {
             Debug.log("cache invalidated", name);
             entries.remove(name);
             return null;
         }
-        Debug.log("cache hit", foundElement.getText());
+        Debug.log("cache hit after revalidation", foundElement.getText());
         return foundElement;
     }
 
