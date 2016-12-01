@@ -96,7 +96,6 @@
 			FLOAT_LITERAL = "regexp:[0-9]+\.[0-9]+"
 			LINE_COMMENT = "regexp://.*"
 			BLOCK_COMMENT = "regexp:/\*([^*]|\*+[^*/])*(\*+/)?"
-			//WHITESPACE = "regexp:[ \t\r\n]+"
 		//}
 	]
 
