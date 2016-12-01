@@ -7,7 +7,7 @@ Early work in progress. Parser was finished quite a while ago and works with all
 On the other hand, reference resolver is very basic - just matches names, ignoring scoping rules and order of module sources in its .src file.
 
 ## Usage
-Install IntelliJ IDEA CE, open `File > Settings > Plugins > Install plugin from disk`, choose file `daedalus-intellij.jar` from root of this repository.
+Install IntelliJ IDEA CE, open `File > Settings > Plugins > Browse repositories`, type `Daedalus` and hit `Install`.
 To open project, use `File > New > Project from Existing Sources...`.
 
 ## Contribution
