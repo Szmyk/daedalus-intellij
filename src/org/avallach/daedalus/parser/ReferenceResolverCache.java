@@ -35,11 +35,11 @@ public class ReferenceResolverCache {
         if (name.isEmpty())
             return null;
         Integer misses = missCounters.get(name);
-        if (misses != null && misses > missBlacklistLevel && random.nextFloat() > 0.2)
-        {
-            Debug.log("cache ignored", reference.getCanonicalText(), misses, missBlacklistLevel);
-            return null;
-        }
+        //if (misses != null && misses > missBlacklistLevel && random.nextFloat() > 0.2)
+        //{
+        //    Debug.log("cache ignored", reference.getCanonicalText(), misses, missBlacklistLevel);
+        //    return null;
+        //}
         Entry entry = entries.get(name);
         if (entry == null)
         {
@@ -49,7 +49,7 @@ public class ReferenceResolverCache {
         PsiElement oldElement = entry.element.get();
         if (oldElement != null && oldElement.isValid())
         {
-            Debug.log("cache hit", oldElement.getText());
+            //Debug.log("cache hit", oldElement.getText());
             return oldElement;
         }
         PsiFile[] files = PsiUtil.findFile(
