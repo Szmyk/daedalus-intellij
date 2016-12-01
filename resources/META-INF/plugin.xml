@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>org.avallach.daedalus.ide</id>
     <name>Daedalus support</name>
-    <version>0.3</version>
+    <version>0.4</version>
     <idea-version since-build="141.0"/>
 
     <description><![CDATA[
@@ -16,6 +16,12 @@
     </vendor>
 
     <change-notes><![CDATA[
+    0.4
+    <ul>
+        <li>support for references to external functions</li>
+        <li>support for "null" literal</li>
+        <li>support for "instance" type</li>
+    </ul>
     0.3
     <ul>
         <li>fixed reference resolver not recognising member references</li>
