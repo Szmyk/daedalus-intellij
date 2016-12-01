@@ -27,13 +27,8 @@ public class Debug
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         //0 is Thread.getStackTrace, 1 is this method, 2 is direct caller, 3 is its caller
         int callerStackDepth = 3;
-        try {
-            while (stackTrace[callerStackDepth].getFileName().equals("Debug.java"))
-                callerStackDepth++;
-        } catch(NullPointerException wtf)
-        {
-            Debug.log(wtf);
-        }
+        while ("Debug.java".equals(stackTrace[callerStackDepth].getFileName()))
+            callerStackDepth++;
         StackTraceElement caller = stackTrace[callerStackDepth];
         return ".(" + caller.getFileName() + ":" + caller.getLineNumber() + ") " // IntelliJ displays .(:) as hyperlink
                 + caller.getMethodName();
