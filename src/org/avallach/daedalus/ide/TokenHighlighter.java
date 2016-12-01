@@ -23,6 +23,7 @@ public class TokenHighlighter extends SyntaxHighlighterBase {
     {
         styles.put(TokenType.WHITE_SPACE, emptyStyle);
         applyStyle(TokenGroups.IDENTIFIERS,       DefaultLanguageHighlighterColors.IDENTIFIER);
+        applyStyle(DaedalusTypes.NULL,            DefaultLanguageHighlighterColors.IDENTIFIER);
         applyStyle(DaedalusTypes.INTEGER_LITERAL, DefaultLanguageHighlighterColors.NUMBER);
         applyStyle(DaedalusTypes.FLOAT_LITERAL,   DefaultLanguageHighlighterColors.NUMBER);
         applyStyle(TokenGroups.KEYWORDS,          DefaultLanguageHighlighterColors.KEYWORD);
