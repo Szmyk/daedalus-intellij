@@ -4,8 +4,12 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.psi.*;
 import com.intellij.psi.impl.source.resolve.ResolveCache;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.avallach.commons.Debug;
+import org.avallach.daedalus.parser.psi.ClassDef;
+import org.avallach.daedalus.parser.psi.DaedalusTypes;
 import org.avallach.daedalus.parser.psi.File;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class ReferenceResolver  implements ResolveCache.Resolver {
     private ReferenceResolverCache cache = new ReferenceResolverCache();
@@ -36,7 +41,10 @@ public class ReferenceResolver  implements ResolveCache.Resolver {
             //TODO: iterate backwards on files listed before this one in .src file
             projectRootManager.getFileIndex().iterateContent(projectFile ->
             {
-                definition[0] = findInFile(reference, psiManager.findFile(projectFile));
+                PsiFile psiFile = psiManager.findFile(projectFile);
+                if (psiFile == null)
+                    return true;
+                definition[0] = findInFile(reference, psiFile);
                 return definition[0] == null;
             });
         }
@@ -84,9 +92,22 @@ public class ReferenceResolver  implements ResolveCache.Resolver {
             return false;
         if (isGloballyScoped(nameNode))
             return true;
+        if (isReferenceToMember(referenceNode, nameNode))
+            return true; //TODO: check order
         if (!isDefinedEarlierInFile(nameNode, referenceNode))
             return false;
         return isDefinedInHigherOrEqualScope(nameNode, referenceNode);
+    }
+
+    private boolean isReferenceToMember(PsiElement referenceNode, PsiNamedElement nameNode) {
+        PsiElement prevSibling = referenceNode.getPrevSibling();
+        if (!(prevSibling instanceof LeafPsiElement))
+            return false;
+        IElementType prevTokenType = ((LeafPsiElement) referenceNode.getPrevSibling()).getElementType();
+        boolean isReferenceToSomeMember = prevTokenType == DaedalusTypes.DOT;
+        boolean isMemberDefinition = nameNode.getParent().getParent() instanceof ClassDef;
+        boolean typesMatch = true; //TODO
+        return isReferenceToSomeMember && isMemberDefinition && typesMatch;
     }
 
     private boolean isDefinedInHigherOrEqualScope(PsiNamedElement nameNode, PsiElement referenceNode) {
@@ -96,11 +117,15 @@ public class ReferenceResolver  implements ResolveCache.Resolver {
     }
 
     private boolean isDefinedEarlierInFile(PsiNamedElement nameNode, PsiElement referenceNode) {
-        return nameNode.getTextOffset() < referenceNode.getTextOffset();
+        boolean pathsAreEqual = Objects.equals(
+                nameNode.getContainingFile().getVirtualFile().getPath(),
+                referenceNode.getContainingFile().getVirtualFile().getPath());
+        boolean isDefinedEarlier = nameNode.getTextOffset() < referenceNode.getTextOffset();
+        return pathsAreEqual && isDefinedEarlier;
     }
 
     private boolean namesMatch(String definitionName, PsiElement referenceNode) {
-        return referenceNode.getText().equals(definitionName);
+        return referenceNode.getText().toLowerCase().equals(definitionName.toLowerCase());
     }
 
     private boolean isGloballyScoped(PsiNamedElement nameNode) {
