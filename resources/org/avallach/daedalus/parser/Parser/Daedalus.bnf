@@ -147,7 +147,7 @@ private Value            ::= INTEGER_LITERAL | FLOAT_LITERAL | STRING_LITERAL | 
 private ComplexReference ::= ComplexReferenceNode [ "." ComplexReferenceNode ]
 //{
 	private ComplexReferenceNode ::= ReferenceNode [ "[" SimpleValue "]" ]
-	private TypeReference        ::= ReferenceNode | "void" | "int" | "float" | "string" | "func" //func because "const func PLAYER_PERC_ASSESSMAGIC = B_AssessMagic;"
 	ReferenceNode                ::= IDENTIFIER_TOKEN
+	private TypeReference        ::= ReferenceNode | "void" | "int" | "float" | "string" | "func" | "instance" //func because "const func PLAYER_PERC_ASSESSMAGIC = B_AssessMagic;", instance because "VAR INSTANCE n0"
 //}
 NameNode ::= IDENTIFIER_TOKEN
