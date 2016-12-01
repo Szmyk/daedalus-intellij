@@ -1,12 +1,12 @@
 <idea-plugin version="2">
     <id>org.avallach.daedalus.ide</id>
     <name>Daedalus support</name>
-    <version>0.1</version>
+    <version>0.2</version>
     <idea-version since-build="141.0"/>
 
     <description><![CDATA[
-Support for Daedalus language, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR). <br>
-This project was developed primarily for SoulFire group.
+<p>Support for Daedalus language, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR).
+<p>This project was developed primarily for SoulFire group. Discussion thread: <a href="http://themodders.org/index.php?topic=27411">themodders.org/index.php?topic=27411</a>
     ]]></description>
 
     <vendor
@@ -16,6 +16,16 @@ This project was developed primarily for SoulFire group.
     </vendor>
 
     <change-notes><![CDATA[
+    0.2
+    <ul>
+        <li>fixed parser bug with unnoticed missing semicolons</li>
+        <li>highlighting of unresolved references</li>
+    </ul>
+    0.1
+    <ul>
+        <li>working parser and highlighting</li>
+        <li>basic reference resolver</li>
+    </ul>
     ]]></change-notes>
 
     <extensions defaultExtensionNs="com.intellij">
