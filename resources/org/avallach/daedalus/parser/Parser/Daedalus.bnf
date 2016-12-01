@@ -144,11 +144,11 @@ private Expression ::= LogicAnd [ "||" Expression ]
 	private Unary      ::= [ "-" | "!" | "~" | "+" ] Value
 //}
 private SimpleValue      ::= INTEGER_LITERAL | ReferenceNode
-private Value            ::= INTEGER_LITERAL | FLOAT_LITERAL | STRING_LITERAL | FuncCall | ComplexReference | ( "(" Expression ")" )
+private Value            ::= INTEGER_LITERAL | FLOAT_LITERAL | STRING_LITERAL | "null" | FuncCall | ComplexReference | ( "(" Expression ")" )
 private ComplexReference ::= ComplexReferenceNode [ "." ComplexReferenceNode ]
 //{
 	private ComplexReferenceNode ::= ReferenceNode [ "[" SimpleValue "]" ]
 	private TypeReference        ::= ReferenceNode | "void" | "int" | "float" | "string" | "func" | "instance" //func because "const func PLAYER_PERC_ASSESSMAGIC = B_AssessMagic;", instance because "VAR INSTANCE n0"
-	ReferenceNode                ::= IDENTIFIER_TOKEN | "null"
+	ReferenceNode                ::= IDENTIFIER_TOKEN
 //}
 NameNode ::= IDENTIFIER_TOKEN
