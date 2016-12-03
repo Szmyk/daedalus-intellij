@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>org.avallach.daedalus.ide</id>
     <name>Daedalus support</name>
-    <version>0.4</version>
+    <version>0.5</version>
     <idea-version since-build="141.0"/>
 
     <description><![CDATA[
@@ -16,6 +16,10 @@
     </vendor>
 
     <change-notes><![CDATA[
+    0.5
+    <ul>
+        <li>minor reference resolver fixes</li>
+    </ul>
     0.4
     <ul>
         <li>support for references to external functions</li>
