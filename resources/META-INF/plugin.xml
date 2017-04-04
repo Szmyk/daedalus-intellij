@@ -1,9 +1,12 @@
 <idea-plugin version="2">
     <id>org.avallach.daedalus.ide</id>
     <name>Daedalus support</name>
-    <version>0.5</version>
+    <version>0.5.1</version>
     <idea-version since-build="141.0"/>
 
+	<depends>com.intellij.modules.lang</depends>
+	<depends>com.intellij.modules.platform</depends>		
+	
     <description><![CDATA[
 <p>Support for Daedalus language, dedicated for gameplay scripting in games on zEngin engine (Gothic I, II, II:NOTR).
 <p>This project was developed primarily for SoulFire group. Discussion thread: <a href="http://themodders.org/index.php?topic=27411">themodders.org/index.php?topic=27411</a>
@@ -16,6 +19,10 @@
     </vendor>
 
     <change-notes><![CDATA[
+	0.5.1
+    <ul>
+        <li>added modules dependencies for compatibility with whole JetBrains software</li>
+    </ul>
     0.5
     <ul>
         <li>minor reference resolver fixes</li>
